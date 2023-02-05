@@ -6,7 +6,7 @@ interface TabType {
   setTab: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function JustifiedExample({ tab, setTab }: TabType) {
+function Tab({ tab, setTab }: TabType) {
   return (
     <>
       <Nav justify variant="tabs" defaultActiveKey="link-0">
@@ -46,4 +46,4 @@ function JustifiedExample({ tab, setTab }: TabType) {
   );
 }
 
-export default JustifiedExample;
+export default Tab;

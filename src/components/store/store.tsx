@@ -4,7 +4,6 @@ import {
   createStore,
   PayloadAction,
 } from "@reduxjs/toolkit";
-import data from "../../data";
 
 //redux store에 state 보관하는 법
 //useState와 비슷한 용도 createSlice에서 state를 생성한다.
@@ -15,9 +14,7 @@ import data from "../../data";
 // 원할때 함수를 실행해달라고 store.js에 요청함
 //staterk array/obj인녁우 user.satate.이렇게 쓰기
 // state.name='park'이렇게 직접 수정해도 state가 변경된다. => immer.js도움으로 자동으로 복사를 해준다.
-let title: string[] = data.map((item) => {
-  return item.title;
-});
+
 let user = createSlice({
   name: "user",
   initialState: [
