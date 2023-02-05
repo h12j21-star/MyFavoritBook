@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import data from "../data";
 import Main from "../pages/Main";
 import Detail from "../pages/Detail";
-import Cart from "../pages/Cart";
+import MyList from "../pages/MyList";
 
 export interface ItemType {
   id: number;
@@ -24,8 +24,8 @@ export default function Router() {
         path="/detail/:id"
         element={<Detail item={item} setItem={setItem} />}
       />
+      <Route path="/cart" element={<MyList />} />
       <Route path="*" element={<div>없는페이지</div>} />
-      <Route path="/cart" element={<Cart />} />
     </Routes>
   );
 }

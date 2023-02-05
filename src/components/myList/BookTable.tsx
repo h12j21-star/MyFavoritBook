@@ -1,12 +1,11 @@
 import Table from "react-bootstrap/Table";
 import { useSelector, useDispatch } from "react-redux";
-import { addCount, RootState } from "../store/store";
-export default function CartTable() {
+import { addCount, delCount, RootState } from "../store/store";
+export default function BookTable() {
   let dispatch = useDispatch();
   let data = useSelector((state: RootState) => {
     return state;
   });
-  console.log(data.user);
   return (
     <Table striped>
       <thead>
@@ -23,11 +22,17 @@ export default function CartTable() {
           <td>Mark</td>
           <td>Otto</td>
           <td>
-            <button>-</button>
-            <span>{data.user[0].count}</span>
             <button
               onClick={() => {
-                dispatch(addCount(1));
+                dispatch(delCount(0));
+              }}
+            >
+              -
+            </button>
+            <span>{data.cart[0].count}개</span>
+            <button
+              onClick={() => {
+                dispatch(addCount(0));
               }}
             >
               +
@@ -38,7 +43,23 @@ export default function CartTable() {
           <td>2</td>
           <td>Jacob</td>
           <td>Thornton</td>
-          <td>@fat</td>
+          <td>
+            <button
+              onClick={() => {
+                dispatch(delCount(1));
+              }}
+            >
+              -
+            </button>
+            <span>{data.cart[1].count}개</span>
+            <button
+              onClick={() => {
+                dispatch(addCount(1));
+              }}
+            >
+              +
+            </button>
+          </td>
         </tr>
         <tr>
           <td>3</td>

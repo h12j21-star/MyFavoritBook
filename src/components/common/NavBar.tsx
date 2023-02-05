@@ -1,12 +1,12 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export default function NavBar() {
   let navigate = useNavigate();
   return (
     <>
       <Navbar bg="light" variant="light">
         <Container>
-          <Navbar.Brand href="#home">DIDI0Mall</Navbar.Brand>
+          <Navbar.Brand href="/">DIDI0Book</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link
               onClick={() => {
@@ -20,14 +20,7 @@ export default function NavBar() {
                 navigate("/");
               }}
             >
-              굿즈
-            </Nav.Link>
-            <Nav.Link
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              호박페이지
+              My Book
             </Nav.Link>
           </Nav>
         </Container>

@@ -1,9 +1,4 @@
-import {
-  configureStore,
-  createSlice,
-  createStore,
-  PayloadAction,
-} from "@reduxjs/toolkit";
+import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import data from "../../data";
 
 //redux store에 state 보관하는 법
@@ -18,18 +13,36 @@ import data from "../../data";
 let title: string[] = data.map((item) => {
   return item.title;
 });
-let user = createSlice({
-  name: "user",
+interface ItemType {
+  id: number;
+  name: string;
+  count: number;
+}
+let cart = createSlice({
+  name: "cart",
   initialState: [
     { id: 0, name: "White and Black", count: 2 },
-    { id: 2, name: "Grey Yordan", count: 1 },
+    { id: 1, name: "Grey Yordan", count: 1 },
   ],
   reducers: {
     addCount(state, action: PayloadAction<number>) {
       let num = state.findIndex((data) => {
         return data.id === action.payload;
       });
-      state[action.payload].count++;
+      state[num].count++;
+    },
+    delCount(state, action: PayloadAction<number>) {
+      let num = state.findIndex((data) => {
+        return data.id === action.payload;
+      });
+      if (state[num].count <= 0) {
+        return;
+      }
+      // count가 0이면 state에서없어지게하기
+      state[num].count--;
+    },
+    addItem(state, action: PayloadAction<ItemType>) {
+      state.push(action.payload);
     },
   },
 });
@@ -47,9 +60,9 @@ let user = createSlice({
 
 let store = configureStore({
   reducer: {
-    user: user.reducer,
+    cart: cart.reducer,
   },
 });
 export default store;
-export let { addCount } = user.actions;
+export let { addCount, delCount, addItem } = cart.actions;
 export type RootState = ReturnType<typeof store.getState>;
