@@ -1,3 +1,18 @@
+export interface BookInfoType {
+  authors: string[];
+  contents: string;
+  price: number;
+  publisher: string;
+  sale_price: number;
+  thumbnail: string;
+  title: string;
+}
+
+export interface BookType {
+  documents: BookInfoType[];
+  meta: object;
+}
+
 export interface ItemType {
   id: number;
   title: string;
