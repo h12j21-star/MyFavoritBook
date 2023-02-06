@@ -1,3 +1,3 @@
-export default function detail() {
+export default function Detail() {
   return <div>디테일 index</div>;
 }
