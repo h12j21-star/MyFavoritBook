@@ -1,3 +1,3 @@
 export default function AddButton() {
-  return <div>추가 버튼</div>;
+  return <button>검색</button>;
 }

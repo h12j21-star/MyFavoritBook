@@ -29,3 +29,12 @@ export interface TabType {
   tab: number;
   setTab: React.Dispatch<React.SetStateAction<number>>;
 }
+
+export interface searchType {
+  searchValue?: string;
+  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface PropsBookType {
+  book: BookInfoType[];
+}
