@@ -8,6 +8,10 @@ export interface BookInfoType {
   title: string;
 }
 
+export interface BookProps {
+  book: BookInfoType[];
+  setBook: React.Dispatch<React.SetStateAction<BookType[]>>;
+}
 export interface BookType {
   documents: BookInfoType[];
   meta: object;
@@ -19,11 +23,6 @@ export interface ItemType {
   content: string;
   price: number;
   image?: string;
-}
-
-export interface DataType {
-  item: ItemType[];
-  setItem: React.Dispatch<React.SetStateAction<ItemType[]>>;
 }
 
 export interface TabType {
