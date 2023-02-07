@@ -1,3 +1,25 @@
+import { useEffect, useState } from "react";
+import { bookSearchHandler } from "../../apis/api/book";
+import { BookInfoType } from "../../Type/interface";
+import Item from "./Item";
+
 export default function ItemList() {
-  return <div>검색하여 나온 책들 리스트</div>;
+  let [book, setBook] = useState<BookInfoType[]>([]);
+  useEffect(() => {
+    bookSearchHandler("파친코", 1).then((res) => setBook(res.documents));
+  }, []);
+  console.log(book);
+  return (
+    <>
+      {book ? (
+        book.map((item: BookInfoType) => (
+          <>
+            <Item {...item} />
+          </>
+        ))
+      ) : (
+        <></>
+      )}
+    </>
+  );
 }
