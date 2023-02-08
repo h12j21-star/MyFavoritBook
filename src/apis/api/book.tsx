@@ -23,7 +23,7 @@ export const bookSearchHandler = async (query: string, reset: number) => {
     size: 10,
   };
   const data = await getBook(params);
-  const bookdata = await getClean(data, params.size);
-  console.log(bookdata);
+  // const bookdata = await getClean(data, params.size);
+  // console.log(bookdata);
   return data;
 };
