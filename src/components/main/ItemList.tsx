@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 export default function ItemList({ book }: PropsBookType) {
   return (
     <Container>
-      <Row xs="4">
+      <Row xs="3">
         {book.map((item, i) => (
           <Item {...item} key={i} />
         ))}
