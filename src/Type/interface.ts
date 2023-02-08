@@ -33,6 +33,7 @@ export interface TabType {
 export interface searchType {
   searchValue?: string;
   setSearchValue: React.Dispatch<React.SetStateAction<string>>;
+  setSort: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface PropsBookType {

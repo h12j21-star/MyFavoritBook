@@ -1,12 +1,12 @@
 import { BookInfoType } from "../../Type/interface";
+import Col from "react-bootstrap/Col";
 
 export default function Item(props: BookInfoType, key: number) {
   return (
-    <li key={key}>
+    <Col key={key}>
+      <img src={props.thumbnail} alt={props.title} />
       <div>{props.title}</div>
       <div>{props.authors}</div>
-      <div>{props.price}원</div>
-      <img src={props.thumbnail} alt={props.title} />
-    </li>
+    </Col>
   );
 }
