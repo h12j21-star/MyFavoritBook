@@ -1,3 +1,6 @@
+import { useState } from "react";
+import Card from "./Card";
+
 export default function Detail() {
-  return <div>디테일 index</div>;
+  return <Card />;
 }

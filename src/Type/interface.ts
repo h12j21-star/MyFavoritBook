@@ -1,11 +1,13 @@
 export interface BookInfoType {
   authors: string[];
+  isbn: string;
   contents: string;
   price: number;
   publisher: string;
   sale_price: number;
   thumbnail: string;
   title: string;
+  url: string;
 }
 
 export interface BookProps {
@@ -33,6 +35,7 @@ export interface TabType {
 export interface searchType {
   searchValue?: string;
   setSearchValue: React.Dispatch<React.SetStateAction<string>>;
+  sort: number;
   setSort: React.Dispatch<React.SetStateAction<number>>;
 }
 

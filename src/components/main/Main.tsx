@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import SearchInput from "./SearchInput";
 import { BookInfoType } from "../../Type/interface";
@@ -18,7 +19,11 @@ export default function Main(): JSX.Element {
   }, [searchValue, sort]);
   return (
     <>
-      <SearchInput setSearchValue={setSearchValue} setSort={setSort} />
+      <SearchInput
+        setSearchValue={setSearchValue}
+        setSort={setSort}
+        sort={sort}
+      />
       <ItemList book={book} />
     </>
   );
