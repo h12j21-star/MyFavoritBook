@@ -1,9 +1,4 @@
-import {
-  configureStore,
-  createSlice,
-  createStore,
-  PayloadAction,
-} from "@reduxjs/toolkit";
+import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 //redux store에 state 보관하는 법
 //useState와 비슷한 용도 createSlice에서 state를 생성한다.
@@ -14,19 +9,35 @@ import {
 // 원할때 함수를 실행해달라고 store.js에 요청함
 //staterk array/obj인녁우 user.satate.이렇게 쓰기
 // state.name='park'이렇게 직접 수정해도 state가 변경된다. => immer.js도움으로 자동으로 복사를 해준다.
-
-let user = createSlice({
-  name: "user",
-  initialState: [
-    { id: 0, name: "White and Black", count: 2 },
-    { id: 2, name: "Grey Yordan", count: 1 },
-  ],
+type ActionType = {
+  id: string;
+  title: string;
+};
+type InitialState = {
+  id: string;
+  title: string;
+  heart: boolean;
+};
+//@reduxjs-toolkit 내부의 immer 패키지가 이러한 직접적 상태 변경으로 보이는 코드를 확인하면 자동으로 기존 상태를 복제한 다음 새로운 상태 객체를 생성하며 모든 상태를 변경할 수 없게 유지한다. 불변성을 고려 하지 않아도된다.
+const initialState: InitialState[] = [];
+let book = createSlice({
+  name: "book",
+  initialState,
   reducers: {
-    addCount(state, action: PayloadAction<number>) {
-      let num = state.findIndex((data) => {
-        return data.id === action.payload;
+    onHeart(state, action: PayloadAction<ActionType>) {
+      let exist = state.map((item) => item.title === action.payload.title);
+      state.push({
+        title: action.payload.title,
+        id: action.payload.id,
+        heart: true,
       });
-      state[action.payload].count++;
+
+      // state[action.payload.id]["title"] = action.payload.title;
+      // state[action.payload.id]["heart"] = false;
+    },
+    offHeart(state, action: PayloadAction<ActionType>) {
+      let arr = state.filter((item) => item.id !== action.payload.id);
+      return arr;
     },
   },
 });
@@ -44,9 +55,9 @@ let user = createSlice({
 
 let store = configureStore({
   reducer: {
-    user: user.reducer,
+    book: book.reducer,
   },
 });
 export default store;
-export let { addCount } = user.actions;
+export let { offHeart, onHeart } = book.actions;
 export type RootState = ReturnType<typeof store.getState>;

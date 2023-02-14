@@ -42,3 +42,8 @@ export interface searchType {
 export interface PropsBookType {
   book: BookInfoType[];
 }
+interface HeartFType {
+  heart: boolean;
+  heartColor: string;
+}
+export type HeartOn = (event: React.MouseEvent<SVGSVGElement>) => HeartFType;

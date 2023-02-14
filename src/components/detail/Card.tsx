@@ -1,10 +1,11 @@
-import { useLocation, useNavigate } from "react-router";
+import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import LikeButton from "../common/LikeButton";
 
 export default function Card() {
   let locate = useLocation();
   let authors = locate.state.authors.join(" ");
-  console.log(authors);
+
   return (
     <>
       <section>
@@ -17,6 +18,7 @@ export default function Card() {
       </section>
       <section>
         <h2 className="ir">좋아요 버튼</h2>
+        <LikeButton {...locate.state} />
       </section>
     </>
   );

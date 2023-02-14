@@ -3,9 +3,12 @@ import Col from "react-bootstrap/Col";
 import imageClean from "../../apis/services/imageClean";
 import { BookAuthor, BookImage, BookTitle } from "./style";
 import { useNavigate } from "react-router";
+import LikeButton from "../common/LikeButton";
 export default function Item(props: BookInfoType, key: number) {
   let navigate = useNavigate();
-  let authors = props.authors.join(" ");
+  let authors =
+    props.authors.length > 0 ? props.authors.join(" ") : "저자 미상";
+
   return (
     <Col key={key}>
       {props.thumbnail ? (
@@ -25,6 +28,7 @@ export default function Item(props: BookInfoType, key: number) {
       )}
       <BookTitle>{props.title}</BookTitle>
       <BookAuthor>{authors}</BookAuthor>
+      <LikeButton {...props} />
     </Col>
   );
 }

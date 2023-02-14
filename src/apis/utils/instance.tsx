@@ -12,3 +12,4 @@ const authAPI = () => {
 };
 
 export const authInstance = authAPI();
+//서버에서 받은 응답의 타입을 정의해 주셔야 합니다. 예를 들어서 서버에서 문자열 배열을 응답으로 넘겨주었다 하면 AxiosPromise<string[]>가 됩니다 :)
