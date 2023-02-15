@@ -23,6 +23,7 @@ export interface ItemType {
   content: string;
   price: number;
   image?: string;
+  isbn: string;
 }
 
 export interface TabType {
