@@ -18,7 +18,11 @@ export default function Main(): JSX.Element {
   }, [searchValue, sort]);
   return (
     <>
-      <SearchInput setSearchValue={setSearchValue} setSort={setSort} />
+      <SearchInput
+        setSearchValue={setSearchValue}
+        setSort={setSort}
+        sort={sort}
+      />
       <ItemList book={book} />
     </>
   );
