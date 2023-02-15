@@ -16,7 +16,7 @@ type ActionType = {
 type InitialState = {
   id: string;
   title: string;
-  heart: boolean;
+  heart: string;
 };
 //@reduxjs-toolkit 내부의 immer 패키지가 이러한 직접적 상태 변경으로 보이는 코드를 확인하면 자동으로 기존 상태를 복제한 다음 새로운 상태 객체를 생성하며 모든 상태를 변경할 수 없게 유지한다. 불변성을 고려 하지 않아도된다.
 const initialState: InitialState[] = [];
@@ -25,19 +25,15 @@ let book = createSlice({
   initialState,
   reducers: {
     onHeart(state, action: PayloadAction<ActionType>) {
-      let exist = state.map((item) => item.title === action.payload.title);
       state.push({
         title: action.payload.title,
         id: action.payload.id,
-        heart: true,
+        heart: "red",
       });
-
-      // state[action.payload.id]["title"] = action.payload.title;
-      // state[action.payload.id]["heart"] = false;
     },
     offHeart(state, action: PayloadAction<ActionType>) {
-      let arr = state.filter((item) => item.id !== action.payload.id);
-      return arr;
+      state = state.filter((item) => item.id !== action.payload.id);
+      return state;
     },
   },
 });

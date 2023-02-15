@@ -4,6 +4,7 @@ import imageClean from "../../apis/services/imageClean";
 import { BookAuthor, BookImage, BookTitle } from "./style";
 import { useNavigate } from "react-router";
 import LikeButton from "../common/LikeButton";
+
 export default function Item(props: BookInfoType, key: number) {
   let navigate = useNavigate();
   let authors =

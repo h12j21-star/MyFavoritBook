@@ -4,30 +4,25 @@ import { offHeart, onHeart, RootState } from "../components/store/store";
 import { BookInfoType } from "../Type/interface";
 
 export default function useButton(props: BookInfoType) {
-  let [fill, setFill] = useState("white");
+  let [fill, setFill] = useState(false);
   let dispatch = useDispatch();
   let likeBook = useSelector((state: RootState) => state.book);
   const heartHandler = () => {
     dispatch(onHeart({ id: props.isbn, title: props.title }));
-    console.log(likeBook);
   };
   const heartOffHandler = () => {
     dispatch(offHeart({ id: props.isbn, title: props.title }));
   };
-  const colorHandler = () => {
-    if (fill === "white") {
-      setFill("red");
-    } else {
-      setFill("white");
-    }
-  };
+  //console.log(likeBook);
   let onClick = (e: React.MouseEvent<SVGSVGElement>) => {
-    colorHandler();
-    if (fill === "white") {
+    if (!fill) {
       heartHandler();
-    } else if (fill === "red") {
+      setFill(true);
+    } else if (fill) {
       heartOffHandler();
+      setFill(false);
     }
   };
-  return { fill, onClick };
+  return { fill, setFill, onClick };
 }
+// fill은
