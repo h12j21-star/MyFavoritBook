@@ -6,6 +6,7 @@ export interface BookInfoType {
   sale_price: number;
   thumbnail: string;
   title: string;
+  isbn: string;
 }
 
 export interface BookProps {
@@ -23,7 +24,6 @@ export interface ItemType {
   content: string;
   price: number;
   image?: string;
-  isbn: string;
 }
 
 export interface TabType {
