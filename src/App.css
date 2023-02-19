@@ -1,3 +1,11 @@
+.ir {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
 .start {
   opacity: 0;
 }
@@ -6,10 +14,11 @@
   transition: opacity 0.8s;
 }
 .main-bg {
-  height: 300px;
+  height: 200px;
   background: url("./assets/image/point.jpeg") center;
   background-size: cover;
 }
 .App {
   text-align: center;
+  height: 400px;
 }

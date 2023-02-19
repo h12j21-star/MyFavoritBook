@@ -15,12 +15,16 @@ export const getBook = async (params: queryType) => {
   }
 };
 
-export const bookSearchHandler = async (query: string, sort: string) => {
+export const bookSearchHandler = async (
+  query: string,
+  sort: string,
+  page: number
+) => {
   const params = {
     query: query,
     sort: sort,
-    page: 1,
-    size: 10,
+    page: page,
+    size: 12,
   };
   const data = await getBook(params);
   // const bookdata = await getClean(data, params.size);

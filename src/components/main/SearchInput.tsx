@@ -5,7 +5,11 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
-export default function SearchInput({ setSearchValue, setSort }: searchType) {
+export default function SearchInput({
+  setSearchValue,
+  setSort,
+  sort,
+}: searchType) {
   let [timer, setTimer] = useState<NodeJS.Timeout>();
   const onChangeInputs = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (timer) {
@@ -21,35 +25,39 @@ export default function SearchInput({ setSearchValue, setSort }: searchType) {
     }, 800);
     setTimer(newTimer);
   };
-  return (
-    <InputGroup
-      className="mb-3"
-      onChange={onChangeInputs}
-      style={{ width: "50%", margin: "40px auto" }}
-    >
-      <Form.Control />
 
-      <DropdownButton
-        variant="outline-secondary"
-        title="Dropdown"
-        id="input-group-dropdown-2"
-        align="end"
+  return (
+    <section>
+      <h2 className="ir">도서검색창</h2>
+      <InputGroup
+        className="mb-3"
+        onChange={onChangeInputs}
+        style={{ width: "50%", margin: "40px auto" }}
       >
-        <Dropdown.Item
-          onClick={(e) => {
-            setSort(0);
-          }}
+        <Form.Control />
+
+        <DropdownButton
+          variant="outline-secondary"
+          title={["정확도순", "최신순"][sort]}
+          id="input-group-dropdown-2"
+          align="end"
         >
-          정확도순
-        </Dropdown.Item>
-        <Dropdown.Item
-          onClick={(e) => {
-            setSort(1);
-          }}
-        >
-          최신순
-        </Dropdown.Item>
-      </DropdownButton>
-    </InputGroup>
+          <Dropdown.Item
+            onClick={(e) => {
+              setSort(0);
+            }}
+          >
+            정확도순
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={(e) => {
+              setSort(1);
+            }}
+          >
+            최신순
+          </Dropdown.Item>
+        </DropdownButton>
+      </InputGroup>
+    </section>
   );
 }

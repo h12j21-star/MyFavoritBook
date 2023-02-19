@@ -6,6 +6,7 @@ export interface BookInfoType {
   sale_price: number;
   thumbnail: string;
   title: string;
+  isbn: string;
 }
 
 export interface BookProps {
@@ -34,8 +35,10 @@ export interface searchType {
   searchValue?: string;
   setSearchValue: React.Dispatch<React.SetStateAction<string>>;
   setSort: React.Dispatch<React.SetStateAction<number>>;
+  sort: number;
 }
 
 export interface PropsBookType {
   book: BookInfoType[];
+  a: any;
 }
