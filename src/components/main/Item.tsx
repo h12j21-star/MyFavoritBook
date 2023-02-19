@@ -1,14 +1,10 @@
-import { BookInfoType } from "../../Type/interface";
+import { BookRefType } from "../../Type/interface";
 import Col from "react-bootstrap/Col";
 import imageClean from "../../apis/services/imageClean";
 import { BookAuthor, BookImage, BookTitle } from "./style";
 import { useNavigate } from "react-router";
-interface BookType2 {
-  book: BookInfoType;
-  a: any;
-  id: number;
-}
-export default function Item(props: BookType2) {
+
+export default function Item(props: BookRefType) {
   let navigate = useNavigate();
   let authors =
     props.book.authors.length > 0 ? props.book.authors.join(" ") : "저자 미상";
@@ -25,7 +21,13 @@ export default function Item(props: BookType2) {
         onClick={() => {
           navigate(`/detail/${props.book.isbn}`, { state: props.book });
         }}
-        ref={props.id % 12 === 0 ? props.a : null}
+        ref={
+          props.id % 11 === 0
+            ? (i) => {
+                props.imgRef(i);
+              }
+            : null
+        }
       />
 
       <BookTitle>{props.book.title}</BookTitle>
