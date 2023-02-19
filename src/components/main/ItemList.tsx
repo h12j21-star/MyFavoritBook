@@ -11,7 +11,7 @@ export default function ItemList(props: PropsBookType) {
         <Container>
           <Row xs="3">
             {props.book.map((item, i) => (
-              <Item book={item} key={i} a={props.a} id={i} />
+              <Item book={item} key={i} imgRef={props.imgRef} id={i} />
             ))}
           </Row>
         </Container>

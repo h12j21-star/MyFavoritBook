@@ -40,5 +40,11 @@ export interface searchType {
 
 export interface PropsBookType {
   book: BookInfoType[];
-  a: any;
+  imgRef: React.Dispatch<React.SetStateAction<HTMLImageElement | null>>;
+}
+
+export interface BookRefType {
+  book: BookInfoType;
+  imgRef: React.Dispatch<React.SetStateAction<HTMLImageElement | null>>;
+  id: number;
 }
