@@ -9,25 +9,12 @@ type InterSectionType = (
   observer: IntersectionObserver
 ) => void;
 export default function Main(): JSX.Element {
-  let [book, setBook] = useState<BookInfoType[]>([]);
   let sortel = ["accuracy", "latest"];
   let [sort, setSort] = useState(0);
   let [searchValue, setSearchValue] = useState("");
   let [bookList, getBookList] = useState<BookInfoType[]>([]);
   let [page, setPage] = useState(1);
-  //let observerRef = useRef(null);
-  // target 지정하기 : 마지막 요소
-  // let target = document.querySelector(".target");
-  // console.log(target);
   let [lastBook, setLastBook] = useState(null);
-  //console.log(observerRef);
-  /*const getBook = () => {
-    console.log(input);
-
-    bookSearchHandler(input, sort, page).then((res) =>
-      getBookList((prev) => prev.concat(res.documents))
-    );
-  };*/
   const interSection: InterSectionType = (entries, observer) => {
     console.log(entries);
     entries.forEach((entry) => {
@@ -42,7 +29,10 @@ export default function Main(): JSX.Element {
       bookSearchHandler(searchValue, sortel[sort], page).then((res) =>
         getBookList((prev) => prev.concat(res.documents))
       );
+    } else if (!searchValue) {
+      getBookList([]);
     }
+    console.log(searchValue);
     console.log(page);
     console.log(bookList);
     console.log(lastBook);
