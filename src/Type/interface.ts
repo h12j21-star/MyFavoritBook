@@ -40,4 +40,5 @@ export interface searchType {
 
 export interface PropsBookType {
   book: BookInfoType[];
+  a: any;
 }

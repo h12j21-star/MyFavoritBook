@@ -3,29 +3,32 @@ import Col from "react-bootstrap/Col";
 import imageClean from "../../apis/services/imageClean";
 import { BookAuthor, BookImage, BookTitle } from "./style";
 import { useNavigate } from "react-router";
-
-export default function Item(props: BookInfoType, key: number) {
+interface BookType2 {
+  book: BookInfoType;
+  a: any;
+  id: number;
+}
+export default function Item(props: BookType2) {
   let navigate = useNavigate();
   let authors =
-    props.authors.length > 0 ? props.authors.join(" ") : "저자 미상";
+    props.book.authors.length > 0 ? props.book.authors.join(" ") : "저자 미상";
+  console.log(props.id);
   return (
-    <Col key={key}>
-      {props.thumbnail ? (
-        <BookImage
-          src={props.thumbnail}
-          alt={props.title}
-          onClick={() => {
-            navigate(`/detail/${props.isbn}`, { state: props });
-          }}
-        />
-      ) : (
-        <BookImage
-          style={{ width: "120px", height: "174px" }}
-          src={imageClean(props.thumbnail)}
-          alt={props.title}
-        />
-      )}
-      <BookTitle>{props.title}</BookTitle>
+    <Col key={props.id}>
+      <BookImage
+        src={
+          props.book.thumbnail
+            ? props.book.thumbnail
+            : imageClean(props.book.thumbnail)
+        }
+        alt={props.book.title}
+        onClick={() => {
+          navigate(`/detail/${props.book.isbn}`, { state: props.book });
+        }}
+        ref={props.id % 12 === 0 ? props.a : null}
+      />
+
+      <BookTitle>{props.book.title}</BookTitle>
       <BookAuthor>{authors}</BookAuthor>
     </Col>
   );
