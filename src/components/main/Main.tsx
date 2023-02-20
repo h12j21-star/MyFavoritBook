@@ -4,6 +4,7 @@ import { BookInfoType } from "../../Type/interface";
 import { bookSearchHandler } from "../../apis/api/book";
 import ItemList from "./ItemList";
 import GetBookList from "../../utils/getBookList";
+import { MainLayout } from "./style";
 type InterSectionType = (
   entries: IntersectionObserverEntry[],
   observer: IntersectionObserver
@@ -14,6 +15,7 @@ export default function Main(): JSX.Element {
   let [searchValue, setSearchValue] = useState("");
   let [bookList, getBookList] = useState<BookInfoType[]>([]);
   let [page, setPage] = useState(1);
+
   let [lastBook, setLastBook] = useState<HTMLImageElement | null>(null);
   const interSection: InterSectionType = (entries, observer) => {
     console.log(entries);
@@ -52,13 +54,13 @@ export default function Main(): JSX.Element {
   }, [lastBook]);
 
   return (
-    <>
+    <MainLayout>
       <SearchInput
         setSearchValue={setSearchValue}
         setSort={setSort}
         sort={sort}
       />
       <ItemList book={bookList} imgRef={setLastBook} />
-    </>
+    </MainLayout>
   );
 }

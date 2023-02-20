@@ -13,11 +13,7 @@
   opacity: 1;
   transition: opacity 0.8s;
 }
-.main-bg {
-  height: 200px;
-  background: url("./assets/image/point.jpeg") center;
-  background-size: cover;
-}
+
 .App {
   text-align: center;
 }

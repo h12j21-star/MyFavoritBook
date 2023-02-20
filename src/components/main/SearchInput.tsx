@@ -4,6 +4,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import { SearchSection } from "./style";
 
 export default function SearchInput({
   setSearchValue,
@@ -27,12 +28,12 @@ export default function SearchInput({
   };
 
   return (
-    <section>
+    <SearchSection>
       <h2 className="ir">도서검색창</h2>
       <InputGroup
         className="mb-3"
         onChange={onChangeInputs}
-        style={{ width: "50%", margin: "40px auto" }}
+        style={{ width: "50%", margin: "0px auto" }}
       >
         <Form.Control />
 
@@ -58,6 +59,6 @@ export default function SearchInput({
           </Dropdown.Item>
         </DropdownButton>
       </InputGroup>
-    </section>
+    </SearchSection>
   );
 }
