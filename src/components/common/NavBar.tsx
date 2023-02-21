@@ -17,7 +17,7 @@ export default function NavBar() {
             </Nav.Link>
             <Nav.Link
               onClick={() => {
-                navigate("/");
+                navigate("/likeBook");
               }}
             >
               My Book List

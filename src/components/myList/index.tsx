@@ -1,3 +1,9 @@
-export default function myList() {
-  return <div>myList index</div>;
+import BookList from "./BookList";
+
+export default function LikeBookList() {
+  return (
+    <>
+      <BookList />
+    </>
+  );
 }
