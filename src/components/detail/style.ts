@@ -2,14 +2,21 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const DetailLayout = styled.section`
-  // margin: 0 auto;
+  width: 80%;
+  height: 80%;
+  margin: 0 auto;
 `;
 const DetailSection = styled.section`
   margin: 100px auto;
-  width: 600px;
+  width: 90%;
+  height: 100%;
   display: grid;
-  grid-template-areas: "img title  author  ." "img contents contents contents " "img .  link link";
+  grid-template-areas: "img info info info" "img contents contents contents " "img .  . link";
   grid-gap: 10px;
+`;
+const DetailBookInfo = styled.div`
+  grid-area: info;
+  display: flex;
 `;
 const DetailImgWrap = styled.div`
   grid-area: img;
@@ -20,12 +27,11 @@ const DetailImgWrap = styled.div`
   margin-right: 20px;
 `;
 const DetailImg = styled.img`
+  width: 140px;
+  height: 180px;
   margin: 60px;
 `;
 const DetailTitle = styled.p`
-  // width: 200px;
-  display: inline-block;
-  grid-area: title;
   font-size: 20px;
   font-weight: 900;
   text-align: left;
@@ -36,9 +42,6 @@ const DetailTitle = styled.p`
   }
 `;
 const DetailAuthor = styled.p`
-  grid-area: author;
-  display: inline-block;
-  // width: 100px;
   text-align: left;
   font-size: 10px;
   margin-left: 10px;
@@ -50,6 +53,7 @@ const DetailContents = styled.p`
   text-align: left;
   font-size: 12px;
   margin-left: 0;
+  line-height: 2;
 `;
 const DetailLink = styled(Link)`
   text-align: center;
@@ -66,4 +70,5 @@ export {
   DetailContents,
   DetailLink,
   DetailImgWrap,
+  DetailBookInfo,
 };

@@ -5,6 +5,7 @@ import { bookSearchHandler } from "../../apis/api/book";
 import ItemList from "./ItemList";
 import GetBookList from "../../utils/getBookList";
 import { MainLayout } from "./style";
+
 type InterSectionType = (
   entries: IntersectionObserverEntry[],
   observer: IntersectionObserver
@@ -28,17 +29,23 @@ export default function Main(): JSX.Element {
   };
   useEffect(() => {
     if (searchValue) {
-      bookSearchHandler(searchValue, sortel[sort], page).then((res) =>
-        getBookList((prev) => prev.concat(res.documents))
+      bookSearchHandler(searchValue, sortel[sort], 1).then((res) =>
+        getBookList(res.documents)
       );
     } else if (!searchValue) {
       getBookList([]);
     }
-    console.log(searchValue);
-    console.log(page);
-    console.log(bookList);
-    console.log(lastBook);
-  }, [page, searchValue]);
+  }, [searchValue, sort]);
+
+  useEffect(() => {
+    if (searchValue) {
+      bookSearchHandler(searchValue, sortel[sort], page).then((res) =>
+        getBookList((prev) => [...prev, ...res.documents])
+      );
+    } else if (!searchValue) {
+      getBookList([]);
+    }
+  }, [page]);
 
   useEffect(() => {
     let observer: IntersectionObserver;

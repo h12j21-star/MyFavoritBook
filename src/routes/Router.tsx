@@ -2,6 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import MainPage from "../pages/MainPage";
 import Detail from "../pages/DetailPage";
 import Cart from "../pages/MyListPa";
+import { Suspense } from "react";
+import Skeleton from "../components/main/Skeleton";
 
 //1. context를 하나 만듦 state보관함
 //2. 공유를 원하는 것을 하나로 감싼다.

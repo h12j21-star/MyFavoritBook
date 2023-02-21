@@ -1,5 +1,5 @@
 import { useLocation } from "react-router";
-import { Link } from "react-router-dom";
+import imageClean from "../../apis/services/imageClean";
 import {
   DetailLayout,
   DetailSection,
@@ -9,6 +9,7 @@ import {
   DetailContents,
   DetailLink,
   DetailImgWrap,
+  DetailBookInfo,
 } from "./style";
 
 export default function Card() {
@@ -24,10 +25,19 @@ export default function Card() {
       <DetailSection>
         <h3 className="ir">책 정보</h3>
         <DetailImgWrap>
-          <DetailImg src={locate.state.thumbnail} alt={locate.state.title} />
+          <DetailImg
+            src={
+              locate.state.thumbnail
+                ? locate.state.thumbnail
+                : imageClean(locate.state.thumbnail)
+            }
+            alt={locate.state.title}
+          />
         </DetailImgWrap>
-        <DetailTitle>{locate.state.title} </DetailTitle>
-        <DetailAuthor>{authors}</DetailAuthor>
+        <DetailBookInfo>
+          <DetailTitle>{locate.state.title} </DetailTitle>
+          <DetailAuthor>{authors}</DetailAuthor>
+        </DetailBookInfo>
         <DetailContents>{locate.state.contents}...</DetailContents>
         <DetailLink to={locate.state.url}>더 자세히 보기</DetailLink>
       </DetailSection>
