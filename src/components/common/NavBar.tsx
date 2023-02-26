@@ -15,13 +15,6 @@ export default function NavBar() {
             >
               HOME
             </Nav.Link>
-            <Nav.Link
-              onClick={() => {
-                navigate("/likeBook");
-              }}
-            >
-              My Book List
-            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>

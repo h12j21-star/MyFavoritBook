@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import MainPage from "../pages/MainPage";
 import Detail from "../pages/DetailPage";
-import Cart from "../pages/MyListPage";
 
 //1. context를 하나 만듦 state보관함
 //2. 공유를 원하는 것을 하나로 감싼다.
@@ -12,7 +11,6 @@ export default function Router() {
       <Route path="/" element={<MainPage />} />
       <Route path="/detail/:id" element={<Detail />} />
       <Route path="*" element={<div>없는페이지</div>} />
-      <Route path="/likeBook" element={<Cart />} />
     </Routes>
   );
 }

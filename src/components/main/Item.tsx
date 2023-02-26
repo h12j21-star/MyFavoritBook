@@ -3,7 +3,6 @@ import Col from "react-bootstrap/Col";
 import imageClean from "../../apis/services/imageClean";
 import { BookAuthor, BookImage, BookTitle } from "./style";
 import { useNavigate } from "react-router";
-import LikeButton from "../common/LikeButton";
 
 export default function Item(props: BookRefType) {
   let navigate = useNavigate();
@@ -33,7 +32,6 @@ export default function Item(props: BookRefType) {
 
       <BookTitle>{props.book.title}</BookTitle>
       <BookAuthor>{authors}</BookAuthor>
-      <LikeButton {...props.book} />
     </Col>
   );
 }
