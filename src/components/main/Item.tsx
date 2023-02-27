@@ -8,7 +8,6 @@ export default function Item(props: BookRefType) {
   let navigate = useNavigate();
   let authors =
     props.book.authors.length > 0 ? props.book.authors.join(" ") : "저자 미상";
-  console.log(props.id);
   return (
     <Col key={props.id}>
       <BookImage
