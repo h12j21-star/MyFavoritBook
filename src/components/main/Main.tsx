@@ -18,7 +18,6 @@ export default function Main(): JSX.Element {
   let [page, setPage] = useState(1);
   let [lastBook, setLastBook] = useState<HTMLImageElement | null>(null);
   const interSection: InterSectionType = (entries, observer) => {
-    console.log(entries);
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         setPage((prev) => prev + 1);
@@ -49,7 +48,6 @@ export default function Main(): JSX.Element {
   useEffect(() => {
     let observer: IntersectionObserver;
     if (lastBook) {
-      console.log(lastBook);
       observer = new IntersectionObserver(interSection, {
         root: null,
         threshold: 1,
