@@ -1,4 +1,3 @@
-import { getClean } from "../services/clean";
 import { authInstance } from "../utils/instance";
 interface queryType {
   query: string;
@@ -27,7 +26,5 @@ export const bookSearchHandler = async (
     size: 12,
   };
   const data = await getBook(params);
-  // const bookdata = await getClean(data, params.size);
-  // console.log(bookdata);
   return data;
 };
