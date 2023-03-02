@@ -14,7 +14,6 @@ export default function SearchInput({
   let [timer, setTimer] = useState<NodeJS.Timeout>();
   const onChangeInputs = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (timer) {
-      console.log("cleartimer");
       clearTimeout(timer);
     }
     const newTimer = setTimeout(async () => {
