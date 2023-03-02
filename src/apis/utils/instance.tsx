@@ -1,5 +1,4 @@
 import axios from "axios";
-_;
 const BASE_URL = "https://dapi.kakao.com";
 
 const authAPI = () => {
