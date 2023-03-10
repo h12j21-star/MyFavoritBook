@@ -1,5 +1,8 @@
 import styled from "styled-components";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 const SkeletonSection = styled.section`
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -10,23 +13,31 @@ const ImageDiv = styled.div`
   height: 150px;
   background-color: #dbdbdb;
 `;
-const TitleP = styled.p`
-  width: 100px;
+const InfoP = styled.div`
+  width: 120px;
   height: 20px;
   background-color: #dbdbdb;
+  text-align: left;
 `;
 
-const AuthorP = styled.p`
-  width: 100px;
-  height: 20px;
-  background-color: #dbdbdb;
-`;
-export default function Skeleton() {
+interface SizeType {
+  size: number;
+}
+export default function Skeleton({ size }: SizeType) {
+  let skeletonArr = Array.from({ length: size });
   return (
-    <SkeletonSection>
-      <ImageDiv></ImageDiv>
-      <TitleP></TitleP>
-      <AuthorP></AuthorP>
-    </SkeletonSection>
+    <Container>
+      <Row xs="3">
+        {skeletonArr.map(() => (
+          <>
+            <SkeletonSection>
+              <ImageDiv></ImageDiv>
+              <InfoP></InfoP>
+              <InfoP></InfoP>
+            </SkeletonSection>
+          </>
+        ))}
+      </Row>
+    </Container>
   );
 }

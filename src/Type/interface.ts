@@ -36,6 +36,8 @@ export interface searchType {
   setSearchValue: React.Dispatch<React.SetStateAction<string>>;
   setSort: React.Dispatch<React.SetStateAction<number>>;
   sort: number;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface PropsBookType {

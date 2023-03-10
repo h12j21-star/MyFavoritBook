@@ -17,13 +17,14 @@ export const getBook = async (params: queryType) => {
 export const bookSearchHandler = async (
   query: string,
   sort: string,
-  page: number
+  page: number,
+  size: number
 ) => {
   const params = {
     query: query,
     sort: sort,
     page: page,
-    size: 12,
+    size: size,
   };
   const data = await getBook(params);
   return data;

@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+
 import SearchInput from "./SearchInput";
 import { BookInfoType } from "../../Type/interface";
 import { bookSearchHandler } from "../../apis/api/book";
 import ItemList from "./ItemList";
 
 import { MainLayout } from "./style";
+import Skeleton from "./Skeleton";
 
 type InterSectionType = (
   entries: IntersectionObserverEntry[],
@@ -17,6 +19,8 @@ export default function Main(): JSX.Element {
   let [bookList, getBookList] = useState<BookInfoType[]>([]);
   let [page, setPage] = useState(1);
   let [lastBook, setLastBook] = useState<HTMLImageElement | null>(null);
+  let [loading, setLoading] = useState(false);
+  let size: number = 12;
   const interSection: InterSectionType = (entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -27,21 +31,23 @@ export default function Main(): JSX.Element {
   };
   useEffect(() => {
     if (searchValue) {
-      bookSearchHandler(searchValue, sortel[sort], 1).then((res) =>
-        getBookList(res.documents)
-      );
+      bookSearchHandler(searchValue, sortel[sort], 1, size)
+        .then((res) => getBookList(res.documents))
+        .then(() => setLoading(false));
     } else if (!searchValue) {
       getBookList([]);
+      setLoading(false);
     }
   }, [searchValue, sort]);
 
   useEffect(() => {
     if (searchValue) {
-      bookSearchHandler(searchValue, sortel[sort], page).then((res) =>
+      bookSearchHandler(searchValue, sortel[sort], page, size).then((res) =>
         getBookList((prev) => [...prev, ...res.documents])
       );
     } else if (!searchValue) {
       getBookList([]);
+      setLoading(false);
     }
   }, [page]);
 
@@ -63,8 +69,14 @@ export default function Main(): JSX.Element {
         setSearchValue={setSearchValue}
         setSort={setSort}
         sort={sort}
+        setLoading={setLoading}
+        loading={loading}
       />
-      <ItemList book={bookList} imgRef={setLastBook} />
+      {loading ? (
+        <Skeleton size={size} />
+      ) : (
+        <ItemList book={bookList} imgRef={setLastBook} />
+      )}
     </MainLayout>
   );
 }

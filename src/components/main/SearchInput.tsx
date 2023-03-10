@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { searchType } from "../../Type/interface";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
@@ -10,9 +10,14 @@ export default function SearchInput({
   setSearchValue,
   setSort,
   sort,
+  loading,
+  setLoading,
 }: searchType) {
   let [timer, setTimer] = useState<NodeJS.Timeout>();
+
   const onChangeInputs = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLoading(true);
+
     if (timer) {
       clearTimeout(timer);
     }
