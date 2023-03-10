@@ -26,12 +26,14 @@ const ImageDiv = styled.div`
   width: 120px;
   height: 150px;
   background-color: #f5f5f5;
+  border-radius: 10px;
   animation: ${SleletonAnimation} 1.8s infinite ease-in-out;
 `;
 const InfoP = styled.div`
   width: 120px;
   height: 20px;
   background-color: #f5f5f5;
+  border-radius: 10px;
   text-align: left;
   animation: ${SleletonAnimation} 1.8s infinite ease-in-out;
 `;
