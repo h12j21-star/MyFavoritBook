@@ -1,6 +1,20 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+const SleletonAnimation = keyframes`
+   0% {
+        background-color: rgba(165, 165, 165, 0.1);
+    }
+
+    50% {
+        background-color: rgba(165, 165, 165, 0.3);
+    }
+
+    100% {
+        background-color: rgba(165, 165, 165, 0.1);
+    }
+
+`;
 const SkeletonSection = styled.section`
   margin-top: 40px;
   display: flex;
@@ -11,13 +25,15 @@ const SkeletonSection = styled.section`
 const ImageDiv = styled.div`
   width: 120px;
   height: 150px;
-  background-color: #dbdbdb;
+  background-color: #f5f5f5;
+  animation: ${SleletonAnimation} 1.8s infinite ease-in-out;
 `;
 const InfoP = styled.div`
   width: 120px;
   height: 20px;
-  background-color: #dbdbdb;
+  background-color: #f5f5f5;
   text-align: left;
+  animation: ${SleletonAnimation} 1.8s infinite ease-in-out;
 `;
 
 interface SizeType {
